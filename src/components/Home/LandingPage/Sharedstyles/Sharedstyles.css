@@ -1,0 +1,118 @@
+.section_wrapper {
+    padding: 50px 20px;
+    background-color: var(--colorWhiteType3);
+    text-align: center;
+  }
+  
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+    background: var(--colorWhiteType2);
+    border: var(--borderGreyType1);
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .header_button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .section h3 {
+    text-align: left;
+    font-size: var(--fontSizeType7);
+    margin-bottom: 20px;
+  }
+  
+  .image_gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .gallery_img {
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .gallery_img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .view_more {
+    align-self: flex-end;
+    background-color: var(--colorBlueType1);
+    color: var(--colorWhiteType1);
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view_more:hover {
+    background-color: var(--primaryColorHover);
+  }
+  
+  /* Tablet */
+  @media (max-width: 768px) {
+    .image_gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    .gallery_img {
+        width: 100%; 
+        max-width: 400px; 
+    }
+  
+    .view_more {
+        margin-top: 20px;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 480px) {
+    .section_wrapper {
+        padding: 30px 10px;
+    }
+  
+    .section h3 {
+        font-size: var(--fontSizeType6);
+    }
+  
+    .header_button {
+        flex-direction: column;
+        gap: 10px; 
+    }
+  
+    .image_gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    .gallery_img {
+        width: 100%; 
+        max-width: 300px; 
+        height: auto; 
+    }
+  
+    .view_more {
+        width: 100%; 
+        max-width: 200px; 
+        margin: 20px auto;
+    }
+  }
+  

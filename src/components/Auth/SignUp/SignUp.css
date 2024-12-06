@@ -1,0 +1,173 @@
+.signup_container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  overflow: hidden;
+  background: url('../../../assets/HeroImages/BackgroundImage.jpeg') center/cover no-repeat;
+}
+
+/* Overlay */
+.signup_overlay {
+  position: absolute;
+  inset: 0; /* shorthand for top, right, bottom, left */
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+/* Logo */
+.signup_logo_container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+  padding: 4px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup_logo_container:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.signup_logo {
+  max-width: 150px;
+  height: auto;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+  transition: filter 0.3s ease;
+}
+
+.signup_logo:hover {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 1));
+}
+
+/* Header */
+.signup_header {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form */
+.signup_form {
+  position: relative;
+  z-index: 3;
+  width: 80%;
+  max-width: 500px;
+  max-height: 85vh;
+  padding: 24px;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollbar Styling */
+.signup_form::-webkit-scrollbar {
+  width: 8px;
+}
+
+.signup_form::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.signup_form::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Form Row */
+.form_row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Ensures items wrap to the next line if space is limited */
+}
+
+/* Buttons */
+.signup_button {
+  background-color: #4caf50;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.signup_button:hover {
+  background-color: #45a049 !important;
+}
+
+.signup_redirect {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.redirect_button {
+  color: #1890ff;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.redirect_button:hover {
+  color: #176cd1; /* Slightly darker blue for hover */
+}
+
+.login_link {
+  color: #1890ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .signup_form {
+    width: 90%; /* Expand form width for medium screens */
+    padding: 20px;
+  }
+  .signup_logo {
+    max-width: 120px; /* Adjust logo size */
+  }
+}
+
+@media (max-width: 768px) {
+  .signup_container {
+    padding: 16px;
+  }
+  .signup_form {
+    width: 95%; /* Expand further for smaller screens */
+  }
+  .signup_header {
+    font-size: 1.25rem; /* Adjust header size for better fit */
+  }
+}
+
+@media (max-width: 480px) {
+  .signup_logo_container {
+    top: 10px;
+    left: 10px;
+  }
+  .signup_logo {
+    max-width: 100px; /* Reduce logo size */
+  }
+  .signup_form {
+    width: 100%; /* Full-width form for mobile */
+    padding: 16px;
+    border-radius: 8px; /* Slightly smaller border radius for compact appearance */
+  }
+  .form_row {
+    flex-direction: column; /* Stack items vertically */
+    gap: 12px; /* Adjust spacing between rows */
+  }
+  .signup_header {
+    font-size: 1rem; /* Compact header size for mobile */
+  }
+}

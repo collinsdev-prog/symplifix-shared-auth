@@ -1,0 +1,82 @@
+.marketplace_container {
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .hero_section {
+    background-image: url('../../../../assets/HeroImages/visitmarketplace.png');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  
+  .hero_content {
+    font-family: 'Raleway';
+    color: var(--colorWhiteType1);
+    z-index: 1;
+  }
+
+  .hero_content h1 {
+    font-size: var(--fontSizeType14);
+  }
+
+  .hero_content p {
+    font-size: var(--fontSizeType5);
+  }
+
+
+  
+  .visit_button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: var(--fontSizeType5);
+    background-color:var(--colorWhiteType1);
+    color: #333;
+  }
+  
+  .preview_sections {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .preview_item {
+    position: relative;
+    width: 45%;
+    overflow: hidden;
+  }
+  
+  .preview_image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); 
+    color: var(--colorWhiteType1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .preview_item:hover .overlay {
+    opacity: 1;
+  }
+  
+  .overlay p {
+    font-size: var(--fontSizeType7);
+    font-weight: bold;
+  }
+  

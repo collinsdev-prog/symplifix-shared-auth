@@ -1,0 +1,86 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif, "Raleway";
+  line-height: 1.5;
+  font-weight: 400;
+  /* font-style: normal; */
+  /* font-size: 16px; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* variables */
+
+  --headerColorType1:  #1A237E;
+
+  --colorWhiteType1: #ffffff;
+  --colorWhiteType2: #f3f3f3;
+  --colorWhiteType3: #f5f5f5;
+
+  --colorBlackType1: #161616;
+  --colorBlackType2: #282828;
+  --colorBlackType3: #00000080;
+  --colorBlackType4: #979797;
+  --colorBlackType5: #00000033;
+  --colorBlackType6: #241f20;
+  --borderBlackType1: 1px solid var(--colorBlackType1);
+
+  --colorGreyType1: #d6d6d6;
+  --colorGreyType2: #f0f0f0;
+  --colorGreyType3: rgba(255, 255, 255, 0.5);
+  --colorGreyType4: #E0E0E0;
+  --borderGreyType1: 1px solid var(--colorGreyType1);
+
+  --colorBlueType1: #486af5;
+  --colorBlueType2: #d8dfff;
+  --colorBlueType3: #7c87b3;
+  --colorBlueType4: #1677ff;
+  --colorBlueType5: #003366;
+  --colorBlueType6: #516579;
+  --colorBlueType7: #1A73E8;
+
+
+  --colorRedType1: #fa2d2d;
+
+  --colorPinkType1: #551a8b;
+
+  --colorGreenType1: #18B131;
+  --colorGreenType2: #63ab6f;
+
+
+--paddingType1: 8px;
+--paddingType2: 16px;
+--paddingType3: 0 8px;
+--paddingType4: 8px 0;
+--paddingType5: 4px;
+--paddingType6: 20px;
+
+
+  --borderRadiustype1: 5px;
+  --borderRadiustype2: 10px;
+
+  --fontSizeType1: 10px;
+  --fontSizeType2: 12px;
+  --fontSizeType3: 14px;
+  --fontSizeType4: 16px;
+  --fontSizeType5: 18px;
+  --fontSizeType6: 20px;
+  --fontSizeType7: 24px;
+  --fontSizeType8: 26px;
+  --fontSizeType9: 28px;
+  --fontSizeType10: 30px;
+  --fontSizeType11: 32px;
+  --fontSizeType12: 34px;
+  --fontSizeType13: 36px;
+  --fontSizeType14: 38px;
+  --fontSizeType15: 40px;
+  --fontSizeType16: 42px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* overflow: hidden; */
+}

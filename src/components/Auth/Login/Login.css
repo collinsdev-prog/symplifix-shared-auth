@@ -1,0 +1,233 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f9fc;
+    overflow: hidden;
+    height: 100vh;
+  }
+  
+  /* Container */
+  .login_container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+    background: url('../../../assets/HeroImages/BackgroundImage.jpeg') center/cover no-repeat;
+  }
+  
+  .login_overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+  }
+  
+  .login_logo_container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 3;
+    padding: 4px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .login_logo_container:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .login_logo {
+    max-width: 150px;
+    height: auto;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+    transition: filter 0.3s ease;
+  }
+  
+  .login_logo:hover {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 1));
+  }
+  
+  /* Card */
+  .login_card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+  
+  .login_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Titles */
+  .login_title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .login_subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  /* Form */
+  .login_form {
+    text-align: left;
+    z-index: 3;
+    position: relative;
+  }
+  
+  .ant-form-item-label > label {
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .input_field {
+    margin-bottom: 10px;
+  }
+  
+  /* Form Footer */
+  .form_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .forgot_link {
+    color: #1890ff;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  .forgot_link:hover {
+    color: #40a9ff;
+  }
+  
+  /* Buttons */
+  .login_button {
+    background-color: #4caf50;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login_button:hover {
+    background-color: #45a049 !important;
+  }
+  
+  /* Signup Redirect */
+  .signup_redirect {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .signup_link {
+    color: #1890ff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .signup_link:hover {
+    color: #40a9ff;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .login_card {
+      max-width: 90%;
+      padding: 20px;
+    }
+  
+    .login_logo {
+      max-width: 120px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .login_container {
+      padding: 16px;
+    }
+  
+    .login_logo_container {
+      top: 15px;
+      left: 15px;
+    }
+  
+    .login_logo {
+      max-width: 100px;
+    }
+  
+    .login_card {
+      padding: 18px;
+      max-width: 95%;
+    }
+  
+    .login_title {
+      font-size: 24px;
+    }
+  
+    .login_subtitle {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .login_container {
+      padding: 12px;
+    }
+  
+    .login_logo_container {
+      top: 10px;
+      left: 10px;
+    }
+  
+    .login_logo {
+      max-width: 80px;
+    }
+  
+    .login_card {
+      padding: 16px;
+      border-radius: 8px;
+      max-width: 100%;
+    }
+  
+    .login_title {
+      font-size: 20px;
+    }
+  
+    .login_subtitle {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+  
+    .form_footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .forgot_link {
+      font-size: 12px;
+    }
+  
+    .signup_redirect {
+      font-size: 12px;
+    }
+  }

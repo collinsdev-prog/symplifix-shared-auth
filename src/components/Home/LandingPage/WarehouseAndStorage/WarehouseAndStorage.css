@@ -1,0 +1,9 @@
+/* Only in Warehouse and Storage */
+.warehouse__looking_for_title {
+    color: var(--colorBlackType6);
+    font-size: var(--fontSizeType15);
+    font-weight: 800;
+    font-family: 'Raleway';
+    margin-bottom: 30px;
+  }
+  

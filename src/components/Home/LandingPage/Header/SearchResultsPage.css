@@ -1,0 +1,55 @@
+.search_results_page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .search_query {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .query_text {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .results_list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .result_item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: left;
+  }
+  
+  .result_item h3 {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .result_item p {
+    margin: 10px 0;
+    color: #666;
+  }
+  
+  .result_item a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .result_item a:hover {
+    text-decoration: underline;
+  }
+  
+  .error_message {
+    color: red;
+    font-size: 16px;
+  }
+  
