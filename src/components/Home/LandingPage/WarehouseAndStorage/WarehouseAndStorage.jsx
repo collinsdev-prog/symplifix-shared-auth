@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import './WarehouseAndStorage.css';
-import '../SharedStyles/Sharedstyles.css'
+import '../Sharedstyles/Sharedstyles.css';
 import WarehouseImage1 from '../../../../assets/HeroImages/BackgroundImage.jpeg';
 import WarehouseImage2 from '../../../../assets/HeroImages/BackgroundImage.jpeg';
 import WarehouseImage3 from '../../../../assets/HeroImages/BackgroundImage.jpeg';
