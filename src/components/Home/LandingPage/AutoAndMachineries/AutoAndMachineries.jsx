@@ -3,8 +3,8 @@ import { Button, Modal } from "antd";
 import "./AutoAndMachineries.css";
 import "../Sharedstyles/Sharedstyles.css";
 import Machinery1 from "../../../../assets/HeroImages/machinary 1.jpg";
-import Machinery2 from "../../../../assets/HeroImages/Machinery 2.jpg";
-import Machinery3 from "../../../../assets/HeroImages/Machinery 3.jpg";
+import Machinery2 from "../../../../assets/HeroImages/machinery 2.jpg";
+import Machinery3 from "../../../../assets/HeroImages/machinery 3.jpg";
 import Machinery4 from "../../../../assets/HeroImages/machinary 1.jpg";
 
 const AutoAndMachineries = () => {
