@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import './WarehouseAndStorage.css';
 import '../Sharedstyles/Sharedstyles.css';
-import WarehouseImage1 from '../../../../assets/HeroImages/BackgroundImage.jpeg';
-import WarehouseImage2 from '../../../../assets/HeroImages/BackgroundImage.jpeg';
-import WarehouseImage3 from '../../../../assets/HeroImages/BackgroundImage.jpeg';
-import WarehouseImage4 from '../../../../assets/HeroImages/BackgroundImage.jpeg';
+import WarehouseImage1 from '/images/BackgroundImage.jpeg';
+import WarehouseImage2 from '/images/BackgroundImage.jpeg';
+import WarehouseImage3 from '/images/BackgroundImage.jpeg';
+import WarehouseImage4 from '/images/BackgroundImage.jpeg';
 
 const WarehouseAndStorage = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);

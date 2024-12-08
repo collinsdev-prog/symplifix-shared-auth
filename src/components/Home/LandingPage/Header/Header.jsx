@@ -31,7 +31,7 @@ const Header = () => {
   }, []);
 
   const handleSearch = () => {
-    console.log('Search Query:', searchQuery); // Ensure this is correctly set
+    console.log('Search Query:', searchQuery);
     console.log('Search Location:', searchLocation);
     if (searchQuery.trim()) {
       navigate(`/search?query=${encodeURIComponent(searchQuery)}&location=${encodeURIComponent(searchLocation)}`);
@@ -68,12 +68,12 @@ const Header = () => {
       {/* Hero Section */}
       <section className="hero-section">
         <motion.div
-          className="hero-content"
+          className="hero_content"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="main-title">
+          <h1 className="main_title">
             Agricultural <span className="solutions">Solutions</span> Made Easy
           </h1>
           <div className="divider"></div>

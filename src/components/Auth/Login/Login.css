@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
     padding: 20px;
     overflow: hidden;
-    background: url('../../../assets/HeroImages/BackgroundImage.jpeg') center/cover no-repeat;
+    background: url('/images/BackgroundImage.jpeg') center/cover no-repeat;
   }
   
   .login_overlay {
@@ -34,20 +34,21 @@ body {
     z-index: 3;
     padding: 4px;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
   .login_logo_container:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); */
   }
   
   .login_logo {
     max-width: 150px;
     height: auto;
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+    filter: invert(1) brightness(0.5); 
+    /* filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8)); */
     transition: filter 0.3s ease;
   }
   

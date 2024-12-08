@@ -4,7 +4,7 @@
   }
   
   .hero_section {
-    background-image: url('../../../../assets/HeroImages/visitmarketplace.png');
+    background-image: url('/images/visitmarketplace.png');
     background-size: cover;
     background-position: center;
     height: 400px;
