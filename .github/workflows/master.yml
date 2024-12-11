@@ -1,0 +1,33 @@
+on: 
+  push:
+    branches:
+      - main
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+
+    - name: Install Node.js 18
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install NPM Packages
+      run: npm install
+ 
+    - name: Build Project
+      run: npm run build
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        # server: ftp.symplifix.com.ng
+        server: ftp.symplifix.com.ng
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: ./
+        local-dir: dist/

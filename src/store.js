@@ -1,11 +1,25 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // LocalStorage for persistence
 import authReducer from './reducers/authReducer';
 
+// Persist configuration
+const persistConfig = {
+  key: 'auth',
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, authReducer);
+
 const store = configureStore({
-  reducer: { auth: authReducer }, // Register the auth reducer
+  reducer: {
+    auth: persistedReducer, // Persisted auth state
+  },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }), // Disable serializable check if necessary
-  devTools: process.env.NODE_ENV !== 'production', // Enable Redux DevTools only in development mode
+    getDefaultMiddleware({ serializableCheck: false }), // Ignore serializability checks for Redux Persist
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
-export default store;
+const persistor = persistStore(store);
+
+export { store, persistor };

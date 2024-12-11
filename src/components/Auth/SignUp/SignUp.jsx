@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Form, Input, Button, Select, message } from "antd";
 import { useDispatch } from "react-redux";
-import { signup } from "../../../actions/authActions";
+import { signup } from "../../../actions/authActions";  
 import { useNavigate, Link } from "react-router-dom";
 import { SharedContext } from "../../../context/SharedContextProvider/SharedContextProvider";
 import "./SignUp.css";
@@ -14,13 +14,17 @@ const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // Form submission handler
   const onFinish = async (values) => {
     const { confirmPassword, ...userData } = values;
+
     try {
-      const response = await dispatch(signup(userData));
+      // Dispatch signup action
+      const response = await dispatch(signup(userData)); // Call redux action
       message.success("Signup successful! Please verify your email.");
-      navigate(`/verify-email?token=${response.token}`);
+      navigate(`/verify-email?token=${response.token}`);  // Assuming the response includes a token
     } catch (error) {
+      // Handle errors
       message.error("Signup failed. Please try again.");
     }
   };
@@ -34,32 +38,24 @@ const Signup = () => {
         </Link>
       </div>
 
-      <Form
-        form={form}
-        layout="vertical"
-        onFinish={onFinish}
-        className="signup_form"
-      >
-        <h2 className="signup_header">Sign-Up </h2>
+      <Form form={form} layout="vertical" onFinish={onFinish} className="signup_form">
+        <h2 className="signup_header">Sign-Up</h2>
 
         <div className="form_row">
           <Form.Item
             name="first_name"
             label="First Name"
-            rules={[
-              { required: true, message: "Please enter your first name" },
-            ]}
-          >
+            rules={[{ required: true, message: "Please enter your first name" }]}>
             <Input placeholder="First Name" />
           </Form.Item>
           <Form.Item
             name="last_name"
             label="Last Name"
-            rules={[{ required: true, message: "Please enter your last name" }]}
-          >
+            rules={[{ required: true, message: "Please enter your last name" }]}>
             <Input placeholder="Last Name" />
           </Form.Item>
         </div>
+
         <div className="form_row">
           <Form.Item
             name="email"
@@ -67,39 +63,34 @@ const Signup = () => {
             rules={[
               { required: true, message: "Please enter your email address" },
               { type: "email", message: "Please enter a valid email address" },
-            ]}
-          >
+            ]}>
             <Input placeholder="Email Address" />
           </Form.Item>
+
           <Form.Item
             name="phone"
             label="Phone"
-            rules={[
-              { required: true, message: "Please enter your phone number" },
-            ]}
-          >
+            rules={[{ required: true, message: "Please enter your phone number" }]}>
             <Input placeholder="Phone" />
           </Form.Item>
         </div>
+
         <div className="form_row">
           <Form.Item
             name="preferred_language"
             label="Preferred Language"
-            rules={[
-              { required: true, message: "Please select a preferred language" },
-            ]}
-          >
+            rules={[{ required: true, message: "Please select a preferred language" }]}>
             <Select placeholder="Preferred Language">
               <Option value="english">English</Option>
               <Option value="french">French</Option>
               <Option value="spanish">Spanish</Option>
             </Select>
           </Form.Item>
+
           <Form.Item
             name="role"
             label="I am a..."
-            rules={[{ required: true, message: "Please select a role" }]}
-          >
+            rules={[{ required: true, message: "Please select a role" }]}>
             <Select placeholder="Select your role">
               <Option value="farmer">Farmer</Option>
               <Option value="warehouse_owner">Warehouse Owner</Option>
@@ -109,14 +100,15 @@ const Signup = () => {
             </Select>
           </Form.Item>
         </div>
+
         <div className="form_row">
           <Form.Item
             name="password"
             label="Password"
-            rules={[{ required: true, message: "Please enter your password" }]}
-          >
+            rules={[{ required: true, message: "Please enter your password" }]}>
             <Input.Password placeholder="Password" />
           </Form.Item>
+
           <Form.Item
             name="confirmPassword"
             label="Confirm Password"
@@ -128,31 +120,22 @@ const Signup = () => {
                   if (!value || getFieldValue("password") === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(
-                    new Error("The two passwords do not match!")
-                  );
+                  return Promise.reject(new Error("The two passwords do not match!"));
                 },
               }),
-            ]}
-          >
+            ]}>
             <Input.Password placeholder="Confirm Password" />
           </Form.Item>
         </div>
+
         <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            block
-            className="signup_button"
-          >
+          <Button type="primary" htmlType="submit" block className="signup_button">
             Sign-Up
           </Button>
         </Form.Item>
+
         <div className="signup_redirect">
-          Already have an account?{" "}
-          <Link to="/login" className="login_link">
-            login Instead
-          </Link>
+          Already have an account? <Link to="/login" className="login_link">Login Instead</Link>
         </div>
       </Form>
     </div>
