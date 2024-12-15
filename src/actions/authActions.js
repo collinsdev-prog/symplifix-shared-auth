@@ -2,7 +2,7 @@ import axios from 'axios';
 import { message } from 'antd';
 import { loginStart, loginSuccess, loginFailure, signupStart, signupSuccess, signupFailure, logout, setTokenExpiry, clearError } from '../reducers/authReducer';
 import { jwtDecode } from 'jwt-decode';
-
+import Cookies from 'js-cookie'; 
 
 const API_URL = `${import.meta.env.VITE_API_URL}/auth`; // Base URL for API
 
@@ -19,7 +19,15 @@ export const signup = (userData) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_URL}/register`, userData);
     const { token, user } = response.data;
-    localStorage.setItem('token', token); 
+
+    // Set token in cookie (use domain to share across subdomains)
+    Cookies.set('authToken', token, { 
+      domain: '.symplifix.com.ng', 
+      secure: true, 
+      httpOnly: true, 
+      sameSite: 'None' 
+    });
+    
     localStorage.setItem('user', JSON.stringify(user)); // Store user data in local storage
     dispatch(signupSuccess({ token, user }));
     message.success('Signup successful! Please verify your email.');
@@ -35,7 +43,15 @@ export const login = (credentials) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_URL}/login`, credentials);
     const { token, user } = response.data;
-    localStorage.setItem('token', token);
+
+    // Set token in cookie (use domain to share across subdomains)
+    Cookies.set('authToken', token, { 
+      domain: '.symplifix.com.ng', 
+      secure: true, 
+      httpOnly: true, 
+      sameSite: 'None' 
+    });
+    
     localStorage.setItem('user', JSON.stringify(user)); // Store user data in local storage
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     dispatch(loginSuccess({ token, user }));
@@ -61,15 +77,15 @@ export const checkTokenExpiration = (token, dispatch) => {
   }
 };
 
-// Check Token Expiration on page load
-const token = localStorage.getItem('token');
+// Check Token Expiration on page load (using cookie)
+const token = Cookies.get('authToken');
 if (token) {
   checkTokenExpiration(token, dispatch);
 }
 
 // Logout Action
 export const logoutUser = () => (dispatch) => {
-  localStorage.removeItem('token');
+  Cookies.remove('authToken', { domain: '.symplifix.com.ng' }); // Remove token from cookie
   localStorage.removeItem('user');
   axios.defaults.headers.common['Authorization'] = '';
   dispatch(logout());
