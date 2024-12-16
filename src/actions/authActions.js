@@ -2,7 +2,7 @@ import axios from 'axios';
 import { message } from 'antd';
 import { loginStart, loginSuccess, loginFailure, signupStart, signupSuccess, signupFailure, logout, setTokenExpiry, clearError } from '../reducers/authReducer';
 import { jwtDecode } from 'jwt-decode';
-// import Cookies from ""; 
+import Cookies from 'js-cookie'; 
 
 const API_URL = `${import.meta.env.VITE_API_URL}/auth`; // Base URL for API
 
