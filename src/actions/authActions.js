@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { message } from 'antd';
-import { loginStart, loginSuccess, loginFailure, signupStart, signupSuccess, signupFailure, logout, setTokenExpiry, clearError } from '../reducers/authReducer';
-import { jwtDecode } from 'jwt-decode';
-import Cookies from 'js-cookie'; 
+import { loginStart, loginSuccess, loginFailure, logout, setTokenExpiry, clearError } from '../reducers/authReducer';
+import jwtDecode from 'jwt-decode';
 
 const API_URL = `${import.meta.env.VITE_API_URL}/auth`; // Base URL for API
 
@@ -13,6 +12,19 @@ const handleApiError = (error, dispatch) => {
   message.error(errorMessage);
 };
 
+// Utility: Role-to-URL mapping
+const roleToDashboardUrl = {
+  admin: `${import.meta.env.VITE_DASHBOARD_BASE_URL}${import.meta.env.VITE_ADMIN_DASHBOARD_PATH}`,
+  farmer: `${import.meta.env.VITE_DASHBOARD_BASE_URL}${import.meta.env.VITE_FARMER_DASHBOARD_PATH}`,
+  "warehouse-manager": `${import.meta.env.VITE_DASHBOARD_BASE_URL}${import.meta.env.VITE_WAREHOUSE_MANAGER_DASHBOARD_PATH}`,
+  "tractor-manager": `${import.meta.env.VITE_DASHBOARD_BASE_URL}${import.meta.env.VITE_TRACTOR_MANAGER_DASHBOARD_PATH}`,
+  "derisking-company": `${import.meta.env.VITE_DASHBOARD_BASE_URL}${import.meta.env.VITE_DERISKING_COMPANY_DASHBOARD_PATH}`,
+  buyer: `${import.meta.env.VITE_DASHBOARD_BASE_URL}${import.meta.env.VITE_BUYER_DASHBOARD_PATH}`,
+};
+
+export default roleToDashboardUrl;
+
+
 // Signup Action
 export const signup = (userData) => async (dispatch) => {
   dispatch(signupStart());
@@ -20,15 +32,9 @@ export const signup = (userData) => async (dispatch) => {
     const response = await axios.post(`${API_URL}/register`, userData);
     const { token, user } = response.data;
 
-    // Set token in cookie (use domain to share across subdomains)
-    Cookies.set('authToken', token, { 
-      domain: '.symplifix.com.ng', 
-      secure: true, 
-      httpOnly: true, 
-      sameSite: 'None' 
-    });
-    
-    localStorage.setItem('user', JSON.stringify(user)); // Store user data in local storage
+    // Store token and user data in localStorage
+    localStorage.setItem('authToken', token);
+    localStorage.setItem('user', JSON.stringify(user));
     dispatch(signupSuccess({ token, user }));
     message.success('Signup successful! Please verify your email.');
   } catch (error) {
@@ -44,18 +50,19 @@ export const login = (credentials) => async (dispatch) => {
     const response = await axios.post(`${API_URL}/login`, credentials);
     const { token, user } = response.data;
 
-    // Set token in cookie (use domain to share across subdomains)
-    Cookies.set('authToken', token, { 
-      domain: '.symplifix.com.ng', 
-      secure: true, 
-      httpOnly: true, 
-      sameSite: 'None' 
-    });
-    
-    localStorage.setItem('user', JSON.stringify(user)); // Store user data in local storage
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    // Store token securely
+    localStorage.setItem("authToken", token);
+    localStorage.setItem("user", JSON.stringify(user));
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
     dispatch(loginSuccess({ token, user }));
+
+    // Check Token Expiration
     checkTokenExpiration(token, dispatch);
+
+    // Redirect to the appropriate dashboard
+    const dashboardUrl = roleToDashboardUrl[user.role] || import.meta.env.VITE_BASE_URL;
+    window.location.href = `${dashboardUrl}?token=${encodeURIComponent(token)}`;
   } catch (error) {
     handleApiError(error, dispatch);
     dispatch(loginFailure(error));
@@ -69,24 +76,23 @@ export const checkTokenExpiration = (token, dispatch) => {
   const currentTime = Date.now();
 
   if (currentTime >= expirationTime) {
-    dispatch(logout());
-    message.info('Session expired. Please log in again.');
+    dispatch(logoutUser());
+    message.info("Session expired. Please log in again.");
   } else {
+    const timeLeft = expirationTime - currentTime;
     dispatch(setTokenExpiry(expirationTime));
-    setTimeout(() => dispatch(logout()), expirationTime - currentTime);
+
+    // Optionally, refresh token before expiration
+    setTimeout(() => {
+      dispatch(logoutUser());
+    }, timeLeft);
   }
 };
 
-// Check Token Expiration on page load (using cookie)
-const token = Cookies.get('authToken');
-if (token) {
-  checkTokenExpiration(token, dispatch);
-}
-
 // Logout Action
 export const logoutUser = () => (dispatch) => {
-  Cookies.remove('authToken', { domain: '.symplifix.com.ng' }); // Remove token from cookie
-  localStorage.removeItem('user');
-  axios.defaults.headers.common['Authorization'] = '';
+  localStorage.removeItem("authToken");
+  localStorage.removeItem("user");
+  axios.defaults.headers.common["Authorization"] = "";
   dispatch(logout());
 };

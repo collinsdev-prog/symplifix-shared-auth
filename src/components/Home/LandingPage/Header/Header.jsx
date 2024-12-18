@@ -51,7 +51,7 @@ const Header = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <header className={`header ${isScrolled ? "scrolled" : ""}`}>
+      <header className={`header_wrapper ${isScrolled ? "scrolled" : ""}`}>
         <div className="header_content">
           <div className="logo_container">
             <img src={logo} alt=" Logo" className="logo" />
@@ -66,7 +66,7 @@ const Header = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="hero-section">
+      <section className="hero__section">
         <motion.div
           className="hero_content"
           initial={{ y: -50, opacity: 0 }}
@@ -77,23 +77,23 @@ const Header = () => {
             Agricultural <span className="solutions">Solutions</span> Made Easy
           </h1>
           <div className="divider"></div>
-          <p className="sub-title">
+          <p className="sub__title">
             Let us handle your <span className="storage">storage</span> while you focus on your agri-business
           </p>
 
           {/* Search Bar */}
-          <div className="modern-search-bar">
+          <div className="modern__search__bar">
             <input
               type="text"
               placeholder="Enter search term (e.g., Tractor)"
-              className="modern-input"
+              className="modern__input"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             <input
               type="text"
               placeholder="Enter location (e.g., Lagos)"
-              className="modern-input"
+              className="modern__input"
               value={searchLocation}
               onChange={(e) => setSearchLocation(e.target.value)}
             />
@@ -106,7 +106,7 @@ const Header = () => {
           </div>
 
           {/* Call to Action */}
-          <Button className="modern-btn supplier-btn">Explore Now</Button>
+          <Button className="modern_btn supplier_btn">Explore Now</Button>
         </motion.div>
       </section>
     </motion.div>
