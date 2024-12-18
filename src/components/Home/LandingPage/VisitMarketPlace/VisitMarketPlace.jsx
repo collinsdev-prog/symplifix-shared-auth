@@ -7,8 +7,8 @@ import GrainsImage from '../../../../assets/HeroImages/Grains.png'
 const VisitMarketPlace = () => {
   return (
     <section className="marketplace_container">
-      <section className="hero_section">
-        <div className="hero_content">
+      <section className="marketplace_hero_section">
+        <div className="marketplace_hero_content">
           <h1>Looking for Fresh Farm Produce?</h1>
           <p>All produce are quality tested, dispatch ready, and delivery efficient.</p>
           <Button className="visit_button">Visit MarketPlace</Button>
